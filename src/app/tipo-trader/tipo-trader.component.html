@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="card" *ngFor="let profile of profiles">
+      <img [src]="profile.image" [alt]="profile.name" />
+      <h2>{{ profile.name }}</h2>
+      <p>{{ profile.description }}</p>
+      <button (click)="selecionarTipo(profile)">{{ profile.buttonText }}</button>
+    </div>
+  </div>
+  

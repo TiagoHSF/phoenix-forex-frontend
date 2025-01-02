@@ -1,0 +1,80 @@
+<div class="crypto-container">
+    <!-- Header com título e botões -->
+    <header class="crypto-header">
+        <!-- <h1>PHOENIX FOREX</h1> -->
+        <img src="../../assets/logo phoenix.webp" alt="" class="img">
+        <!-- <div style="font-size: 40%;">Olá, Tiago!</div> -->
+        <div class="header-buttons">
+            <button class="btn">ACESSO VIP <i class="fas fa-crown"></i></button>
+            <button class="btn">CONFIGURAÇÕES</button>
+        </div>
+    </header>
+
+    <div style="margin-top: 20px" class="comecar-operar">
+        <button class="btn" (click)="alterarStatusOperacao()">{{ !operando ? 'COMEÇAR A OPERAR' : 'FINALIZAR OPERAÇÕES'
+            }} <i class="fas fa-crown"></i></button>
+        - <b>{{ tipoTrader }}</b>
+    </div>
+
+    <div *ngIf="operando">
+        <app-operacao></app-operacao>
+    </div>
+
+    <div *ngIf="!operando">
+        <!-- Área de gráficos -->
+        <div class="crypto-graph-section">
+            <div class="graph-title">
+                <h2>Pares Forex</h2>
+                <div class="date-range">
+                    <span *ngIf="bandeiraOrigem" class="flag-icon {{ bandeiraOrigem }}"></span>
+                    {{ parSelecionado }}
+                    <span *ngIf="bandeiraDestino" class="flag-icon {{ bandeiraDestino }}"></span>
+                </div>
+            </div>
+            <div class="graph">
+                <app-grafico-trading (parSelecionado)="receberPar($event)"></app-grafico-trading>
+            </div>
+        </div>
+
+        <!-- Preços das criptomoedas -->
+        <div class="crypto-prices">
+            <div class="price-card">
+                <h3>EUR/USD</h3>
+                <p class="price">$34,500.25</p>
+                <p class="change positive">+2.5%</p>
+            </div>
+            <div class="price-card">
+                <h3>USD/CAD</h3>
+                <p class="price">$2,300.15</p>
+                <p class="change negative">-1.8%</p>
+            </div>
+            <div class="price-card">
+                <h3>USD/JPY</h3>
+                <p class="price">$150.75</p>
+                <p class="change positive">+3.0%</p>
+            </div>
+        </div>
+
+        <!-- Últimas transações -->
+        <div class="transactions">
+            <h3>ÚLTIMAS OPERAÇÕES</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>PAR</th>
+                        <th>DATA</th>
+                        <th>SINAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of buscarUltimasOperacoes()">
+                        <td>{{ item.par }}</td>
+                        <td>{{ item.data | date:'dd/MM/yyyy HH:mm' }}</td>
+                        <td>{{ item.sinal }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

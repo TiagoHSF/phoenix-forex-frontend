@@ -1,0 +1,24 @@
+<div class="crypto-graph-section">
+    <div class="graph-title">
+        <h2>📈 Sinais de Operações</h2>
+        <div *ngIf="sinalRecebido">
+            <span>🕒 NOVO SINAL para {{ formatarData(dataDaOperacao) }}</span>
+            <h4>
+                Sinal de {{ sinalDeAcao }}
+                <span 
+                    [ngClass]="{
+                        'arrow-up': sinalDeAcao.toLowerCase() === 'compra',
+                        'arrow-down': sinalDeAcao.toLowerCase() === 'venda'
+                    }"
+                    class="arrow-icon"
+                ></span>
+            </h4>
+            <h4>PAR DE MOEDAS:
+                <span *ngIf="bandeiraOrigem" class="flag-icon {{ bandeiraOrigem }}"></span>
+                {{ parDeMoedaRecebido }}
+                <span *ngIf="bandeiraDestino" class="flag-icon {{ bandeiraDestino }}"></span>
+            </h4>
+        </div>
+    </div>
+    <iframe src="https://trade.avalonbroker.io/traderoom" frameborder="0" style="width: 100% !important; height: 30rem !important;"></iframe>
+</div>
