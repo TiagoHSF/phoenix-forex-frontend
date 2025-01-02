@@ -1,6 +1,6 @@
 <div class="crypto-container">
     <!-- Header com título e botões -->
-    <header class="crypto-header">
+    <div class="crypto-header">
         <!-- <h1>PHOENIX FOREX</h1> -->
         <img src="../../assets/logo phoenix.webp" alt="" class="img">
         <!-- <div style="font-size: 40%;">Olá, Tiago!</div> -->
@@ -8,12 +8,12 @@
             <button class="btn">ACESSO VIP <i class="fas fa-crown"></i></button>
             <button class="btn">CONFIGURAÇÕES</button>
         </div>
-    </header>
+    </div>
 
     <div style="margin-top: 20px" class="comecar-operar">
         <button class="btn" (click)="alterarStatusOperacao()">{{ !operando ? 'COMEÇAR A OPERAR' : 'FINALIZAR OPERAÇÕES'
             }} <i class="fas fa-crown"></i></button>
-        - <b>{{ tipoTrader }}</b>
+         <b *ngIf="tipoTrader != ''">MODO: {{ tipoTrader }}</b>
     </div>
 
     <div *ngIf="operando">

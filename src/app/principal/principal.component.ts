@@ -25,10 +25,13 @@ export class PrincipalComponent implements OnInit {
   ngOnInit(): void {
     if (!localStorage.getItem("tipo")) {
       this.dialog.open(TipoTraderComponent, {
-        width: '400px', // Ajuste a largura conforme necessário
+        width: '80%', // Ajuste a largura conforme necessário
         data: {
           message: 'Escolha seu perfil de trader!'
-        }
+        },
+        disableClose: true
+      }).beforeClosed().subscribe(() => {
+        this.tipoTrader = localStorage.getItem("tipo");
       });
     }
   }

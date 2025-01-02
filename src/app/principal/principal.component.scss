@@ -3,7 +3,7 @@
 //     padding: 20px;
 //     background-color: #f4f4f9;
 //   }
-  
+
 //   /* Cabeçalho */
 //   .crypto-header {
 //     display: flex;
@@ -13,11 +13,11 @@
 //     color: #fff;
 //     padding: 10px;
 //   }
-  
+
 //   .crypto-header h1 {
 //     font-size: 24px;
 //   }
-  
+
 // //   .header-buttons .btn {
 // //     background-color: #ff840a;
 // //     color: white;
@@ -43,7 +43,7 @@
 //     transition: all 0.3s ease; /* Transição suave em interações */
 //     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para um efeito mais elegante */
 //   }
-  
+
 // //   .header-buttons .btn:hover {
 // //     background-color: #45a049;
 // //   }
@@ -52,12 +52,12 @@
 //     background-color: #ff6600; /* Cor mais suave na hover */
 //     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais intensa na hover */
 //   }
-  
+
 //   .header-buttons .btn:focus {
 //     outline: none; /* Remove a borda padrão */
 //     box-shadow: 0 0 0 2px #ff840a; /* Borda de destaque ao focar no botão */
 //   }
-  
+
 //   /* Área de gráficos */
 //   .crypto-graph-section {
 //     margin-top: 30px;
@@ -66,13 +66,13 @@
 //     border-radius: 8px;
 //     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 //   }
-  
+
 //   .graph-title {
 //     display: flex;
 //     justify-content: space-between;
 //     align-items: center;
 //   }
-  
+
 //   .graph-title h2 {
 //     font-size: 22px;
 //   }
@@ -82,7 +82,7 @@
 //     height: 500px; /* Ou a altura que preferir */
 //     position: relative;
 //   }
-  
+
 //   .date-range .btn {
 //     font-size: 12px;
 //     padding: 5px 10px;
@@ -91,7 +91,7 @@
 //     border-radius: 5px;
 //     cursor: pointer;
 //   }
-  
+
 //   .graph-placeholder {
 //     width: 100%;
 //     height: 300px;
@@ -102,14 +102,14 @@
 //     color: #888;
 //     font-size: 18px;
 //   }
-  
+
 //   /* Preços das criptomoedas */
 //   .crypto-prices {
 //     display: flex;
 //     justify-content: space-between;
 //     margin-top: 30px;
 //   }
-  
+
 //   .price-card {
 //     background-color: #fff;
 //     padding: 15px;
@@ -118,30 +118,30 @@
 //     width: 30%;
 //     text-align: center;
 //   }
-  
+
 //   .price-card h3 {
 //     font-size: 18px;
 //     color: #333;
 //   }
-  
+
 //   .price-card .price {
 //     font-size: 24px;
 //     font-weight: bold;
 //     margin: 10px 0;
 //   }
-  
+
 //   .price-card .change {
 //     font-size: 14px;
 //   }
-  
+
 //   .price-card .change.positive {
 //     color: green;
 //   }
-  
+
 //   .price-card .change.negative {
 //     color: red;
 //   }
-  
+
 //   /* Transações */
 //   .transactions {
 //     margin-top: 30px;
@@ -150,30 +150,30 @@
 //     border-radius: 8px;
 //     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 //   }
-  
+
 //   .transactions table {
 //     width: 100%;
 //     border-collapse: collapse;
 //   }
-  
+
 //   .transactions th, .transactions td {
 //     padding: 10px;
 //     text-align: center;
 //   }
-  
+
 //   .transactions th {
 //     background-color: #f4f4f9;
 //     color: #333;
 //   }
-  
+
 //   .transactions tr:nth-child(even) {
 //     background-color: #f9f9f9;
 //   }
-  
+
 //   .transactions td {
 //     border-top: 1px solid #ddd;
 //   }
-  
+
 //   .transactions td.status {
 //     font-weight: bold;
 //   }
@@ -182,7 +182,7 @@
 //     width: 10%;
 //     height: 10%;
 //   }
-  
+
 /* Layout geral */
 .crypto-container {
   padding: 20px;
@@ -197,7 +197,8 @@
   background-color: #29293b;
   color: #fff;
   padding: 10px;
-  flex-wrap: wrap; /* Permite que o conteúdo se mova para novas linhas em telas menores */
+  flex-wrap: wrap;
+  /* Permite que o conteúdo se mova para novas linhas em telas menores */
 }
 
 .crypto-header h1 {
@@ -217,12 +218,18 @@
   padding: 12px 20px;
   margin: 0 10px;
   cursor: pointer;
-  border-radius: 25px; /* Mais arredondado para um visual mais suave */
-  font-size: 16px; /* Aumentando o tamanho da fonte para um melhor visual */
-  font-weight: 600; /* Deixa o texto mais robusto */
-  text-transform: uppercase; /* Tira o estilo de texto mais comum */
-  transition: all 0.3s ease; /* Transição suave em interações */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para um efeito mais elegante */
+  border-radius: 25px;
+  /* Mais arredondado para um visual mais suave */
+  font-size: 16px;
+  /* Aumentando o tamanho da fonte para um melhor visual */
+  font-weight: 600;
+  /* Deixa o texto mais robusto */
+  text-transform: uppercase;
+  /* Tira o estilo de texto mais comum */
+  transition: all 0.3s ease;
+  /* Transição suave em interações */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra para um efeito mais elegante */
 }
 
 .comecar-operar .btn {
@@ -232,22 +239,32 @@
   padding: 12px 20px;
   margin: 0 10px;
   cursor: pointer;
-  border-radius: 25px; /* Mais arredondado para um visual mais suave */
-  font-size: 16px; /* Aumentando o tamanho da fonte para um melhor visual */
-  font-weight: 600; /* Deixa o texto mais robusto */
-  text-transform: uppercase; /* Tira o estilo de texto mais comum */
-  transition: all 0.3s ease; /* Transição suave em interações */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para um efeito mais elegante */
+  border-radius: 25px;
+  /* Mais arredondado para um visual mais suave */
+  font-size: 16px;
+  /* Aumentando o tamanho da fonte para um melhor visual */
+  font-weight: 600;
+  /* Deixa o texto mais robusto */
+  text-transform: uppercase;
+  /* Tira o estilo de texto mais comum */
+  transition: all 0.3s ease;
+  /* Transição suave em interações */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra para um efeito mais elegante */
 }
 
 .header-buttons .btn:hover {
-  background-color: #ff6600; /* Cor mais suave na hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais intensa na hover */
+  background-color: #ff6600;
+  /* Cor mais suave na hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  /* Sombra mais intensa na hover */
 }
 
 .header-buttons .btn:focus {
-  outline: none; /* Remove a borda padrão */
-  box-shadow: 0 0 0 2px #ff840a; /* Borda de destaque ao focar no botão */
+  outline: none;
+  /* Remove a borda padrão */
+  box-shadow: 0 0 0 2px #ff840a;
+  /* Borda de destaque ao focar no botão */
 }
 
 /* Área de gráficos */
@@ -263,7 +280,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Permite que o título e as bandeiras se ajustem em telas menores */
+  flex-wrap: wrap;
+  /* Permite que o título e as bandeiras se ajustem em telas menores */
 }
 
 .graph-title h2 {
@@ -272,7 +290,8 @@
 
 .graph {
   width: 100%;
-  height: 500px; /* Ou a altura que preferir */
+  height: 500px;
+  /* Ou a altura que preferir */
   position: relative;
 }
 
@@ -301,7 +320,8 @@
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
-  flex-wrap: wrap; /* Permite que os cards se ajustem em telas menores */
+  flex-wrap: wrap;
+  /* Permite que os cards se ajustem em telas menores */
 }
 
 .price-card {
@@ -311,7 +331,8 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 30%;
   text-align: center;
-  margin-bottom: 20px; /* Adiciona espaço entre os cards */
+  margin-bottom: 20px;
+  /* Adiciona espaço entre os cards */
 }
 
 .price-card h3 {
@@ -351,7 +372,8 @@
   border-collapse: collapse;
 }
 
-.transactions th, .transactions td {
+.transactions th,
+.transactions td {
   padding: 10px;
   text-align: center;
 }
@@ -375,62 +397,78 @@
 
 /* Responsividade para telas pequenas */
 @media (max-width: 768px) {
+
   .crypto-header {
-      flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
+    flex-direction: column;
+    align-items: center;
+    /* Centraliza os itens horizontalmente */
+    text-align: center;
+    /* Centraliza o texto */
+    padding: 20px;
+    /* Adiciona um pouco mais de espaçamento para dispositivos móveis */
   }
 
   .crypto-header .header-buttons {
-      width: 100%;
-      justify-content: flex-start;
-      margin-top: 10px;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 10px;
   }
 
   .crypto-header .img {
-      max-width: 120px;
-      margin-bottom: 10px;
+    max-width: 120px;
+    margin-bottom: 10px;
   }
 
+  .header-buttons .btn {
+    margin: 5px;
+    /* Adiciona espaçamento entre os botões */
+  }
+
+
+
   .crypto-graph-section .graph-title {
-      flex-direction: column;
-      text-align: left;
+    flex-direction: column;
+    text-align: left;
   }
 
   .crypto-prices {
-      display: grid;
-      grid-template-columns: 1fr; /* Exibe os cards de preço em uma coluna em telas menores */
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Exibe os cards de preço em uma coluna em telas menores */
   }
 
   .price-card {
-      width: 100%;
+    width: 100%;
   }
 
   .transactions table {
-      font-size: 14px;
+    font-size: 14px;
   }
 }
 
 /* Responsividade para telas muito pequenas (ex: smartphones em modo retrato) */
 @media (max-width: 480px) {
   .crypto-header h1 {
-      font-size: 20px;
+    font-size: 20px;
   }
 
   .crypto-prices {
-      grid-template-columns: 1fr; /* Todos os cards em uma coluna */
+    grid-template-columns: 1fr;
+    /* Todos os cards em uma coluna */
   }
 
   .crypto-prices .price-card {
-      width: 100%; /* Garante que os cards usem toda a largura disponível */
+    width: 100%;
+    /* Garante que os cards usem toda a largura disponível */
   }
 
   .transactions table {
-      font-size: 12px;
+    font-size: 12px;
   }
 }
 
 .start-operate {
   display: grid;
-  grid-template-columns: 1fr; /* Exibe os cards de preço em uma coluna em telas menores */
+  grid-template-columns: 1fr;
+  /* Exibe os cards de preço em uma coluna em telas menores */
 }

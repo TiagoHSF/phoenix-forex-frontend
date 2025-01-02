@@ -14,19 +14,19 @@ export class TipoTraderComponent {
     {
       name: 'Agressivo',
       description: 'Perfil que assume grandes riscos para obter altos retornos.',
-      image: 'assets/agressivo.jpg',
+      image: '../../assets/tipo-trader/lion.webp',
       buttonText: 'Escolher Agressivo'
     },
     {
       name: 'Moderado',
       description: 'Perfil equilibrado entre risco e retorno.',
-      image: 'assets/moderado.jpg',
+      image: '../../assets/tipo-trader/eagle.webp',
       buttonText: 'Escolher Moderado'
     },
     {
       name: 'Conservador',
       description: 'Perfil que prioriza segurança e estabilidade.',
-      image: 'assets/conservador.jpg',
+      image: '../../assets/tipo-trader/turtle.webp',
       buttonText: 'Escolher Conservador'
     }
   ];
