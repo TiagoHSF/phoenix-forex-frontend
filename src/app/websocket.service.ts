@@ -9,7 +9,7 @@ export class WebSocketService {
   private socket: Socket;
 
   constructor() {
-    this.socket = io('http://localhost:3000'); 
+    this.socket = io('https://phoenix-forex-ty31.onrender.com'); 
   }
 
   listen(eventName: string): Observable<any> {
