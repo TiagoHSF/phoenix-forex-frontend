@@ -1,0 +1,18 @@
+<div class="login-container">
+    <div class="login-card">
+        <div style="display: flex; margin-bottom: 20px; font-size: 20px;">
+            <span *ngIf="bandeiraOrigem" class="flag-icon {{ bandeiraOrigem }}" style="margin-right: 2px;"></span>
+            <span>EUR/USD</span>
+            <span *ngIf="bandeiraDestino" class="flag-icon {{ bandeiraDestino }}" style="margin-left: 2px;"></span>
+        </div>
+
+        <div *ngIf="!operacaoIniciada">
+            <button type="submit" class="btn" (click)="iniciarOperacao()">Iniciar Operação</button>
+        </div>
+
+        <div *ngIf="operacaoIniciada" style="display: flex;">
+            <span>{{mensagemAcao}}</span>
+            <!-- <span>{{seconds}}</span> -->
+        </div>
+    </div>
+</div>
