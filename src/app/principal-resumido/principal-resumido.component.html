@@ -10,9 +10,12 @@
             <button type="submit" class="btn" (click)="iniciarOperacao()">Iniciar Operação</button>
         </div>
 
-        <div *ngIf="operacaoIniciada" style="display: flex;">
+        <div *ngIf="operacaoIniciada && !parDeMoedaRecebido" style="display: flex;">
             <span>{{mensagemAcao}}</span>
-            <!-- <span>{{seconds}}</span> -->
+        </div>
+
+        <div *ngIf="operacaoIniciada && parDeMoedaRecebido"  style="display: flex;">
+            <span>{{sinalDeAcao}} para {{dataDaOperacao}}</span>
         </div>
     </div>
 </div>

@@ -13,6 +13,11 @@ export class PrincipalResumidoComponent implements OnInit {
   mensagemAcao: string = "";
   interval: any;
 
+  dataDaOperacao: any
+  parDeMoedaRecebido: string | null = "";
+  sinalRecebido = false;
+  sinalDeAcao: string = "";
+
   constructor(private readonly webSocketService: WebSocketService) {
 
   }
@@ -23,13 +28,7 @@ export class PrincipalResumidoComponent implements OnInit {
   ngOnInit(): void {
 
     this.webSocketService.listen('signals').subscribe((data: OperacaoDTO) => {
-      console.log(data)
-      this.seconds = 0;
-      this.interval?.clear();
-      // if (new Date() < new Date(this.dataDaOperacao) || !this.dataDaOperacao) {
-      // this.processarOperacao(data);
-      // this.sinalRecebido = true;
-      // }
+      this.processarOperacao(data);
     });
 
     this.verificarBandeira("EUR/USD");
@@ -93,21 +92,67 @@ export class PrincipalResumidoComponent implements OnInit {
       this.seconds += 1
 
       if (this.seconds < 100) {
-        this.mensagemAcao = "Buscando operações em potencial!";
+        this.mensagemAcao = "Identificando operações com maior potencial de retorno...";
       }
       if (this.seconds > 100 && this.seconds < 250) {
-        this.mensagemAcao = "Analisando as últimas notícias";
+        this.mensagemAcao = "Realizando análise detalhada das notícias mais recentes...";
       }
-      if (this.seconds > 250 && this.seconds < 700) {
-        this.mensagemAcao = `Cerca de ${Math.floor(Math.random() * 90000) + 10000} mil notícias estão sendo analisadas`;
+      if (this.seconds > 250 && this.seconds < 450) {
+        this.mensagemAcao = `Avaliando cerca de ${Math.floor(Math.random() * 90000) + 10000} notícias para identificar padrões relevantes...`;
       }
-      if (this.seconds > 700) {
-        this.mensagemAcao = "Buscando operações em potencial!";
+      if (this.seconds > 450 && this.seconds < 800) {
+        this.mensagemAcao = "Monitorando tendências e movimentos de mercado em tempo real...";
+      }
+      if (this.seconds > 800 && this.seconds < 1000) {
+        this.mensagemAcao = "Analisando o sentimento dos investidores para prever comportamentos futuros...";
+      }
+      if (this.seconds > 1200) {
+        this.seconds = 0;
+      }
 
+      if (this.dataDaOperacao) {
+        const dataLimite = this.dataDaOperacao;
+        dataLimite.setMinutes(new Date().getMinutes() + 1);
+        if (this.dataDaOperacao > dataLimite) {
+          this.parDeMoedaRecebido = null;
+          this.seconds = 0;
+        }
       }
-
 
     }, 100)
+  }
+
+  processarOperacao(operacao: OperacaoDTO) {
+    // const tipo = localStorage.getItem("tipo");
+    // const selecao = tipo?.toLowerCase();
+
+    if (!this.dataDaOperacao) {
+      this.dataDaOperacao = new Date();
+    }
+    this.dataDaOperacao.setMinutes(new Date().getMinutes() + 1);
+
+    // if (selecao) {
+    // this.parDeMoedaRecebido = operacao.signal[`${selecao}`]?.split(" ").pop();
+    this.parDeMoedaRecebido = operacao.signal[`agressivo`]?.split(" ").pop();
+    if (this.parDeMoedaRecebido) {
+      this.verificarBandeira(this.parDeMoedaRecebido);
+    }
+
+    this.sinalDeAcao = this.verificarSinalRecebido(operacao, 'agressivo');
+
+    this.playNotificationSound();
+    // }
+
+  }
+
+  playNotificationSound() {
+    const audio = new Audio('assets/audio/notification.wav');
+    audio.play();
+  }
+
+  verificarSinalRecebido(operacao: OperacaoDTO, selecao: string) {
+    const regex = /\b(compra|venda)\b/i;
+    return operacao.signal[`${selecao}`].match(regex)?.[0];
   }
 
 
