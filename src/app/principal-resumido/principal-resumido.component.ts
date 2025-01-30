@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { OperacaoDTO } from '../operacao/dtos/operacao.dto';
 import { WebSocketService } from '../websocket.service';
 import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
@@ -17,6 +17,9 @@ export class PrincipalResumidoComponent implements OnInit {
   parDeMoedaRecebido: string | null = "";
   sinalRecebido = false;
   sinalDeAcao: string = "";
+
+  @Input()
+  tipoTrader!: string;
 
   constructor(private readonly webSocketService: WebSocketService) {
 
@@ -91,33 +94,44 @@ export class PrincipalResumidoComponent implements OnInit {
     this.interval = setInterval(() => {
       this.seconds += 1
 
-      if (this.seconds < 100) {
-        this.mensagemAcao = "Identificando operações com maior potencial de retorno...";
-      }
-      if (this.seconds > 100 && this.seconds < 250) {
-        this.mensagemAcao = "Realizando análise detalhada das notícias mais recentes...";
-      }
-      if (this.seconds > 250 && this.seconds < 450) {
-        this.mensagemAcao = `Avaliando cerca de ${Math.floor(Math.random() * 90000) + 10000} notícias para identificar padrões relevantes...`;
-      }
-      if (this.seconds > 450 && this.seconds < 800) {
-        this.mensagemAcao = "Monitorando tendências e movimentos de mercado em tempo real...";
-      }
-      if (this.seconds > 800 && this.seconds < 1000) {
-        this.mensagemAcao = "Analisando o sentimento dos investidores para prever comportamentos futuros...";
-      }
-      if (this.seconds > 1200) {
-        this.seconds = 0;
-      }
-
-      if (this.dataDaOperacao) {
-        const dataLimite = this.dataDaOperacao;
-        dataLimite.setMinutes(new Date().getMinutes() + 1);
-        if (this.dataDaOperacao > dataLimite) {
+      if (!this.dataDaOperacao) {
+        if (this.seconds < 100) {
+          this.mensagemAcao = "Identificando operações com maior potencial de retorno...";
+        }
+        if (this.seconds > 100 && this.seconds < 250) {
+          this.mensagemAcao = "Realizando análise detalhada das notícias mais recentes...";
+        }
+        if (this.seconds > 250 && this.seconds < 450) {
+          this.mensagemAcao = `Avaliando cerca de ${Math.floor(Math.random() * 90000) + 10000} notícias para identificar padrões relevantes...`;
+        }
+        if (this.seconds > 450 && this.seconds < 800) {
+          this.mensagemAcao = "Monitorando tendências e movimentos de mercado em tempo real...";
+        }
+        if (this.seconds > 800 && this.seconds < 1000) {
+          this.mensagemAcao = "Analisando o sentimento dos investidores para prever comportamentos futuros...";
+        }
+        if (this.seconds > 1200) {
+          this.seconds = 0;
+        }
+      } else {
+        if (this.seconds > 800) {
           this.parDeMoedaRecebido = null;
+          this.dataDaOperacao = null;
           this.seconds = 0;
         }
       }
+
+
+
+      // if (this.dataDaOperacao) {
+      //   const dataLimite = new Date(this.dataDaOperacao); // Cria uma cópia de this.dataDaOperacao
+      //   dataLimite.setMinutes(dataLimite.getMinutes() + 1); // Adiciona 1 minuto à cópia
+
+      //   if (dataLimite > this.dataDaOperacao) {
+      //     this.parDeMoedaRecebido = null;
+      //     this.seconds = 0;
+      //   }
+      // }
 
     }, 100)
   }
@@ -126,9 +140,9 @@ export class PrincipalResumidoComponent implements OnInit {
     // const tipo = localStorage.getItem("tipo");
     // const selecao = tipo?.toLowerCase();
 
-    if (!this.dataDaOperacao) {
-      this.dataDaOperacao = new Date();
-    }
+    // if (!this.dataDaOperacao) {
+    this.dataDaOperacao = new Date();
+    // }
     this.dataDaOperacao.setMinutes(new Date().getMinutes() + 1);
 
     // if (selecao) {
@@ -153,6 +167,18 @@ export class PrincipalResumidoComponent implements OnInit {
   verificarSinalRecebido(operacao: OperacaoDTO, selecao: string) {
     const regex = /\b(compra|venda)\b/i;
     return operacao.signal[`${selecao}`].match(regex)?.[0];
+  }
+
+  acessarCorretora() {
+    window.open('https://trade.avalonbroker.io/register?aff=744459&aff_model=revenue&afftrack=', '_blank')
+  }
+
+  tipoConta() {
+    if (this.tipoTrader == "MODERADO") {
+      return "10-50 Operações por dia!";
+    } else {
+      return "50-200 Operações por dia!";
+    }
   }
 
 

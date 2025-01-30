@@ -1,21 +1,41 @@
+<div *ngIf="tipoTrader == 'MODERADO'">
+    
+</div>
 <div class="login-container">
     <div class="login-card">
-        <div style="display: flex; margin-bottom: 20px; font-size: 20px;">
-            <span *ngIf="bandeiraOrigem" class="flag-icon {{ bandeiraOrigem }}" style="margin-right: 2px;"></span>
+        <div>
+            {{tipoConta()}}
+        </div>
+        <div class="currency-header">
+            <span *ngIf="bandeiraOrigem" class="flag-icon {{ bandeiraOrigem }}"></span>
             <span>EUR/USD</span>
-            <span *ngIf="bandeiraDestino" class="flag-icon {{ bandeiraDestino }}" style="margin-left: 2px;"></span>
+            <span *ngIf="bandeiraDestino" class="flag-icon {{ bandeiraDestino }}"></span>
         </div>
 
-        <div *ngIf="!operacaoIniciada">
+        <div *ngIf="!operacaoIniciada" class="action-section">
             <button type="submit" class="btn" (click)="iniciarOperacao()">Iniciar Operação</button>
         </div>
 
-        <div *ngIf="operacaoIniciada && !parDeMoedaRecebido" style="display: flex;">
+        <div *ngIf="operacaoIniciada && !parDeMoedaRecebido" class="message-section">
             <span>{{mensagemAcao}}</span>
         </div>
 
-        <div *ngIf="operacaoIniciada && parDeMoedaRecebido"  style="display: flex;">
-            <span>{{sinalDeAcao}} para {{dataDaOperacao}}</span>
+        <div *ngIf="operacaoIniciada && parDeMoedaRecebido" class="operation-details">
+            <div class="operation-period" style="font-weight: bold;">
+                PERÍODO 1m <i class="fas fa-clock"></i>
+            </div>
+            <div class="action-signal" [ngClass]="sinalDeAcao == 'COMPRA' ? 'buy' : 'sell'">
+                <i [ngClass]="sinalDeAcao == 'COMPRA' ? 'fas fa-arrow-up' : 'fas fa-arrow-down'"></i>
+                {{sinalDeAcao}}
+            </div>
+            <span style="font-weight: bold; font-size: 15px;">ENTRADA AGORA</span>
+            <span style="font-size: 13px; font-weight: bold;">PARA {{ dataDaOperacao | date:'dd/MM/yyyy HH:mm' }} <i
+                    class="fas fa-calendar"></i></span>
+        </div>
+
+        <div class="login-broker" style="margin-top: 30px;">
+            <span>Faça login na corretora</span>
+            <button type="submit" class="btn btn-corretora" (click)="acessarCorretora()">Avalon</button>
         </div>
     </div>
 </div>

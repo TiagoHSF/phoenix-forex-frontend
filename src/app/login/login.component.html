@@ -10,11 +10,11 @@
                 <label for="password">Senha</label>
                 <input type="password" id="password" formControlName="password" placeholder="Digite sua senha" />
             </div>
-            <button type="submit" class="btn" (click)="login()">Entrar</button>
+            <button type="submit" class="btn" (click)="login()" [disabled]="desabilitar"  [ngClass]="{'desabilitar': desabilitar}">Entrar</button>
         </form>
     </div>
 </div>
 
 <div *ngIf="autenticado">
-    <app-principal-resumido></app-principal-resumido>
+    <app-principal-resumido [tipoTrader]="tipoTrader"></app-principal-resumido>
 </div>
