@@ -24,9 +24,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const token = localStorage.getItem("tkn");
     if (token?.includes("QGdtYWlsLmNvbSIsImJhc2UiOiJ") && token.includes("WN1cml0eVByb2Nlc3MiLCJmb3JleCI6IlZhbGlkYcOnw6NvIGZvcmV4IG9iIn0") && token.includes("eyJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvIjoiZm9yZXhmY")) {
+      this.tipoTrader = "MODERADO";
       this.autenticado = true;
     }
     if (token?.includes("QmFzZTIwMjUiLCJzZWN1cml0eSI6IkhhcmRTZWN1cml0eVB") && token.includes("leCI6IlZhbGlkYc") && token.includes("eyJhbGciOiJIUzI1NiJ9.MjU2In0.e30.yDQwjH83001DU5uf5ZPsHbHyrate0r0XOeO_RxfLMi0")) {
+      this.tipoTrader = "AGRESSIVO";
       this.autenticado = true;
     }
   }

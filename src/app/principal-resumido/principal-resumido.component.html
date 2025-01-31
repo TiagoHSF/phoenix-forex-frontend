@@ -1,7 +1,10 @@
-<div *ngIf="tipoTrader == 'MODERADO'">
-    
-</div>
 <div class="login-container">
+    <div style="display: flex;">
+        <button *ngIf="tipoTrader == 'MODERADO'" class="btn upgrade-btn" (click)="upgradeConta()" style="margin-right: 6vh;"><i
+                class="fas fa-crown" style="margin-right: 2px;"></i>Liberar Mais Operações</button>
+        <button class="btn upgrade-btn" (click)="sair()"><i class="fas fa-sign-out"
+                style="margin-right: 2px;"></i></button>
+    </div>
     <div class="login-card">
         <div>
             {{tipoConta()}}

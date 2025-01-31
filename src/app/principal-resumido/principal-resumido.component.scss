@@ -6,6 +6,15 @@
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  position: relative; /* Necessário para o posicionamento absoluto do botão */
+}
+
+/* Botão de upgrade */
+.upgrade-btn {
+  position: absolute; /* Posiciona o botão fora do fluxo do layout */
+  top: 20px;  /* Distância do topo */
+  right: 20px; /* Distância da borda direita */
+  z-index: 10; /* Garante que o botão fique sobre os outros elementos */
 }
 
 /* Card */

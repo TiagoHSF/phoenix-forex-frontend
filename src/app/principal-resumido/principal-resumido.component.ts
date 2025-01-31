@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { OperacaoDTO } from '../operacao/dtos/operacao.dto';
 import { WebSocketService } from '../websocket.service';
 import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
+import { DialogRef } from '@angular/cdk/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { PagamentoUpgradeComponent } from '../pagamento-upgrade/pagamento-upgrade.component';
 
 @Component({
   selector: 'app-principal-resumido',
@@ -21,7 +24,8 @@ export class PrincipalResumidoComponent implements OnInit {
   @Input()
   tipoTrader!: string;
 
-  constructor(private readonly webSocketService: WebSocketService) {
+  constructor(private readonly webSocketService: WebSocketService,
+    private readonly dialog: MatDialog) {
 
   }
 
@@ -31,7 +35,9 @@ export class PrincipalResumidoComponent implements OnInit {
   ngOnInit(): void {
 
     this.webSocketService.listen('signals').subscribe((data: OperacaoDTO) => {
-      this.processarOperacao(data);
+      if (this.operacaoIniciada) {
+        this.processarOperacao(data);
+      }
     });
 
     this.verificarBandeira("EUR/USD");
@@ -181,5 +187,19 @@ export class PrincipalResumidoComponent implements OnInit {
     }
   }
 
+  upgradeConta() {
+    const modal = this.dialog.open(PagamentoUpgradeComponent, {
+      maxWidth: 'none',
+      disableClose: false,
+      data: {
+
+      }
+    });
+  }
+
+  sair() {
+    localStorage.clear();
+    window.location.reload();
+  }
 
 }
